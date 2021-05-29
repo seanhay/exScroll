@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>exScroll.js test page</title>
+	</head>
+	<body>
+		<main>
+			<div class="content">
+				<div class="wrapper">
+					<div class="inner"></div>
+				</div>
+				<div class="scrollbar"></div>
+			</div>
+
+			<div class="content">
+				<div class="wrapper">
+					<div class="inner"></div>
+				</div>
+				<div class="scrollbar"></div>
+			</div>
+
+			<div class="test-container" exscroll>
+				<div class="aaaa" exscroll-content>
+					<div class="inner"></div>
+				</div>
+				<div exscroll-scrollbar></div>
+			</div>
+		</main>
+
+		<script src="../dist/exscroll.js"></script>
+		<script>
+			let scroller = new exScroll({
+				wrapperName: ".content",
+				contentName: ".wrapper",
+				scrollerName: ".ex-scrollbar",
+			})
+
+			let scroller2 = new exScroll({})
+		</script>
+	</body>
+</html>
