@@ -1,4 +1,4 @@
-function exScroll(opts = {} as Object) {
+function exScroll(opts = {}) {
 	
 	const defaultOptions = {
 		wrapperName: '[exscroll]',
@@ -14,8 +14,8 @@ function exScroll(opts = {} as Object) {
 	const containers = document.querySelectorAll(options.wrapperName)
 
 	containers.forEach((container) => {
-		const el = container.querySelector(options.contentName) as HTMLElement
-		const scrollbar = container.querySelector(options.scrollerName) as HTMLElement
+		const el = container.querySelector(options.contentName)
+		const scrollbar = container.querySelector(options.scrollerName)
 
 		// Add classes
 		el.classList.add('exscroll-wrapper')
@@ -31,9 +31,9 @@ function exScroll(opts = {} as Object) {
 		scrollbar.appendChild(scrollTrack)
 
 		// Set initial vars
-		let isScrolling = false as boolean
-		let scrollStart = 0 as number
-		let scrollPercent = 0 as number
+		let isScrolling = false
+		let scrollStart = 0
+		let scrollPercent = 0
 
 		let elScrollWidth = el.scrollWidth
 		let elVisibleWidth = el.offsetWidth
@@ -47,13 +47,13 @@ function exScroll(opts = {} as Object) {
 				scrollPercent = (el.scrollLeft / (el.scrollWidth - el.offsetWidth)) * (100 - elVisiblePercentage)
 				scrollDragger.style.cssText += ";" + "left:" + scrollPercent + "%"
 			}
-		});
+		})
 
 		// Start scrolling the external scrollbar - touch
 		container.addEventListener("mousedown", scrollStartHandler)
 		scrollDragger.addEventListener("touchstart", scrollStartHandler)
 		
-		function scrollStartHandler(event:any){
+		function scrollStartHandler(event){
 			isScrolling = true;
 			scrollStart = event.touches ? event.touches[0].clientX : event.clientX;
 		}
@@ -73,7 +73,7 @@ function exScroll(opts = {} as Object) {
 		document.addEventListener("mousemove", scrollMoveHandler)
 		container.addEventListener("touchmove", scrollMoveHandler)
 		
-		function scrollMoveHandler(event:any){
+		function scrollMoveHandler(event){
 			if (isScrolling) {
 				let scrollPos = event.touches ? event.touches[0].clientX : event.clientX
 				let scrollOffsetPercent = ((scrollPos - scrollStart) / scrollTrack.offsetWidth) * 100
@@ -94,4 +94,8 @@ function exScroll(opts = {} as Object) {
 			}
 		}
 	})
+}
+
+if(typeof exports != "undefined"){    
+	module.exports.exScroll
 }

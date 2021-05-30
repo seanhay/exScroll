@@ -1,31 +1,34 @@
 {
-	"name": "exscroll",
-	"version": "0.1.0",
-	"description": "A plugin for customisable scrollbars outside a content container",
-	"main": "index.js",
-	"directories": {
-		"test": "test"
-	},
-	"scripts": {
-		"tsc": "tsc",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/seanhay/exScroll.git"
-	},
-	"keywords": [
-		"scrollbar",
-		"plugin",
-		"customisable"
-	],
-	"author": "Sean Hay <sean@seanhay.com>",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/seanhay/exScroll/issues"
-	},
-	"homepage": "https://github.com/seanhay/exScroll#readme",
-	"devDependencies": {
-		"typescript": "^4.3.2"
-	}
+  "name": "exscroll",
+  "version": "1.0.0",
+  "description": "A plugin for customisable scrollbars outside a content container",
+  "main": "dist/exScroll.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "postcss": "postcss --use autoprefixer -o dist/exScroll.css src/exScroll.pcss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanhay/exScroll.git"
+  },
+  "keywords": [
+    "scrollbar",
+    "customizable"
+  ],
+  "author": "Sean Hay (https://seanhay.dev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanhay/exScroll/issues"
+  },
+  "homepage": "https://github.com/seanhay/exScroll#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "autoprefixer": "^10.2.6",
+    "postcss-cli": "^8.3.1"
+  }
 }
