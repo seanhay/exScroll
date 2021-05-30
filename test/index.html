@@ -34,15 +34,15 @@
 	</head>
 	<body>
 		<main>
-			<div class="content">
-				<div class="wrapper">
+			<div class="wrapper">
+				<div class="content">
 					<div class="inner"></div>
 				</div>
 				<div class="scrollbar"></div>
 			</div>
 
-			<div class="content">
-				<div class="wrapper">
+			<div class="wrapper">
+				<div class="content">
 					<div class="inner"></div>
 				</div>
 				<div class="scrollbar"></div>
@@ -59,12 +59,12 @@
 		<script src="../dist/exScroll.js"></script>
 		<script>
 			let scroller = new exScroll({
-				wrapperName: ".content",
-				contentName: ".wrapper",
+				wrapperName: ".wrapper",
+				contentName: ".content",
 				scrollerName: ".scrollbar",
 			})
 
-			let scroller2 = new exScroll()
+			exScroll()
 		</script>
 	</body>
 </html>
