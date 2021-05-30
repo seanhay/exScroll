@@ -1,0 +1,31 @@
+{
+	"name": "exscroll",
+	"version": "0.1.0",
+	"description": "A plugin for customisable scrollbars outside a content container",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"tsc": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/seanhay/exScroll.git"
+	},
+	"keywords": [
+		"scrollbar",
+		"plugin",
+		"customisable"
+	],
+	"author": "Sean Hay <sean@seanhay.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/seanhay/exScroll/issues"
+	},
+	"homepage": "https://github.com/seanhay/exScroll#readme",
+	"devDependencies": {
+		"typescript": "^4.3.2"
+	}
+}
