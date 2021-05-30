@@ -18,6 +18,18 @@
 				background: url(https://images.unsplash.com/photo-1612292741055-612f12bd0e50?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMjEwNTkyMA&ixlib=rb-1.2.1&q=85)
 					center bottom/cover;
 			}
+
+			.test-container {
+				max-width: 700px;
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.test-container .inner {
+				width: 5000px;
+				height: 230px;
+				background-color: #f1f1f1;
+			}
 		</style>
 	</head>
 	<body>
@@ -52,7 +64,7 @@
 				scrollerName: ".scrollbar",
 			})
 
-			let scroller2 = new exScroll({})
+			let scroller2 = new exScroll()
 		</script>
 	</body>
 </html>

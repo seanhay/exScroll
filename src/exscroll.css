@@ -1,5 +1,12 @@
 .exscroll-wrapper {
-	overflow:hidden;
+	width: 100%;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.exscroll-wrapper::-webkit-scrollbar {
+	display:none;
 }
 
 .exscroll-scrollbar {
