@@ -5,6 +5,20 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>exScroll.js test page</title>
+		<link rel="stylesheet" href="../dist/exscroll.css" />
+		<style>
+			.content {
+				max-width: 600px;
+				width: 100%;
+				margin: 40px auto;
+			}
+			.inner {
+				width: 2000px;
+				height: 230px;
+				background: url(https://images.unsplash.com/photo-1612292741055-612f12bd0e50?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMjEwNTkyMA&ixlib=rb-1.2.1&q=85)
+					center bottom/cover;
+			}
+		</style>
 	</head>
 	<body>
 		<main>
@@ -35,7 +49,7 @@
 			let scroller = new exScroll({
 				wrapperName: ".content",
 				contentName: ".wrapper",
-				scrollerName: ".ex-scrollbar",
+				scrollerName: ".scrollbar",
 			})
 
 			let scroller2 = new exScroll({})

@@ -10,7 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 function exScroll(opts) {
     if (opts === void 0) { opts = {}; }
     var defaultOptions = {
@@ -24,13 +23,13 @@ function exScroll(opts) {
         var el = container.querySelector(options.contentName);
         var scrollbar = container.querySelector(options.scrollerName);
         // Add classes
-        el.classList.add('exscroller-wrapper');
-        scrollbar.classList.add('exscroller-scrollbar');
+        el.classList.add('exscroll-wrapper');
+        scrollbar.classList.add('exscroll-scrollbar');
         // Structure constructor
         var scrollDragger = document.createElement('span');
-        scrollDragger.classList.add('scroll-dragger');
+        scrollDragger.classList.add('exscroll-dragger');
         var scrollTrack = document.createElement('div');
-        scrollTrack.classList.add('scroll-track');
+        scrollTrack.classList.add('exscroll-track');
         scrollTrack.appendChild(scrollDragger);
         scrollbar.appendChild(scrollTrack);
         // Set initial vars
@@ -90,4 +89,3 @@ function exScroll(opts) {
         }
     });
 }
-exports.default = exScroll;

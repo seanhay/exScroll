@@ -18,14 +18,14 @@ function exScroll(opts = {} as Object) {
 		const scrollbar = container.querySelector(options.scrollerName) as HTMLElement
 
 		// Add classes
-		el.classList.add('exscroller-wrapper')
-		scrollbar.classList.add('exscroller-scrollbar')
+		el.classList.add('exscroll-wrapper')
+		scrollbar.classList.add('exscroll-scrollbar')
 
 		// Structure constructor
 		const scrollDragger = document.createElement('span')
-		scrollDragger.classList.add('scroll-dragger')
+		scrollDragger.classList.add('exscroll-dragger')
 		const scrollTrack = document.createElement('div')
-		scrollTrack.classList.add('scroll-track')
+		scrollTrack.classList.add('exscroll-track')
 
 		scrollTrack.appendChild(scrollDragger)
 		scrollbar.appendChild(scrollTrack)
@@ -95,5 +95,3 @@ function exScroll(opts = {} as Object) {
 		}
 	})
 }
-
-export default exScroll
