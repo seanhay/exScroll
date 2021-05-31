@@ -1,5 +1,5 @@
 # exScroll
-A lightweight javascript plugin for adding a customisable, responsive scrollbar to any overflowing container.
+A lightweight javascript plugin for adding a customisable, responsive scrollbar to a location outside of (but linked to!) any overflowing container.
 
 ## Quick start
 ### Install
@@ -18,8 +18,8 @@ The required CSS is found at:
 The plugin requires the following DOM structure, though the attributes can optionally be replaced by classes during initialisation:
 ```html
 <div exscroll>
-	<div exscroll-content></div>
-	<div exscroll-scrollbar></div>
+    <div exscroll-content></div>
+    <div exscroll-scrollbar></div>
 </div>
 ```
 Then the plugin can be initialised with:
@@ -31,14 +31,14 @@ exScroll();
 Currently, the options are only for the structure, which can be modified with class names:
 ```html
 <div class="wrapper">
-	<div class="content"></div>
-	<div class="scrollbar"></div>
+    <div class="content"></div>
+    <div class="scrollbar"></div>
 </div>
 ```
 ```javascript
 exScroll({
-	wrapperName:  ".wrapper",
-	contentName:  ".content",
-	scrollerName: ".scrollbar",
+    wrapperName:  ".wrapper",
+    contentName:  ".content",
+    scrollerName: ".scrollbar",
 });
 ```
