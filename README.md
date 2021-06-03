@@ -42,3 +42,10 @@ exScroll({
     scrollerName: ".scrollbar",
 });
 ```
+
+## TODO
+- [ ] Make an init function
+- [ ] Make a destroy function
+- [ ] Adjust recalculations for media queries
+- [ ] Add screenshots to docs
+- [ ] Rewrite docs for legibility
