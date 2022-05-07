@@ -1,6 +1,14 @@
+export {}
+
+type Options = {
+	wrapperName: string;
+	contentName: string;
+	scrollerName: string;
+}
+
 function exScroll(opts = {}) {
 	
-	const defaultOptions = {
+	const defaultOptions:Options = {
 		wrapperName: '[exscroll]',
 		contentName: '[exscroll-content]',
 		scrollerName: '[exscroll-scrollbar]'
@@ -14,30 +22,30 @@ function exScroll(opts = {}) {
 	const containers = document.querySelectorAll(options.wrapperName)
 
 	containers.forEach((container) => {
-		const el = container.querySelector(options.contentName)
-		const scrollbar = container.querySelector(options.scrollerName)
+		const el:HTMLElement = container.querySelector(options.contentName)
+		const scrollbar:HTMLElement = container.querySelector(options.scrollerName)
 
 		// Add classes
 		el.classList.add('exscroll-wrapper')
 		scrollbar.classList.add('exscroll-scrollbar')
 
 		// Structure constructor
-		const scrollDragger = document.createElement('span')
+		const scrollDragger:HTMLElement = document.createElement('span')
 		scrollDragger.classList.add('exscroll-dragger')
-		const scrollTrack = document.createElement('div')
+		const scrollTrack:HTMLElement = document.createElement('div')
 		scrollTrack.classList.add('exscroll-track')
 
 		scrollTrack.appendChild(scrollDragger)
 		scrollbar.appendChild(scrollTrack)
 
 		// Set initial vars
-		let isScrolling = false
-		let scrollStart = 0
-		let scrollPercent = 0
+		let isScrolling:boolean = false
+		let scrollStart:number = 0
+		let scrollPercent:number = 0
 
-		let elScrollWidth = el.scrollWidth
-		let elVisibleWidth = el.offsetWidth
-		let elVisiblePercentage = (elVisibleWidth / elScrollWidth) * 100
+		let elScrollWidth:number = el.scrollWidth
+		let elVisibleWidth:number = el.offsetWidth
+		let elVisiblePercentage:number = (elVisibleWidth / elScrollWidth) * 100
 
 		scrollDragger.style.cssText = "width:" + elVisiblePercentage + "%"
 
@@ -75,8 +83,8 @@ function exScroll(opts = {}) {
 		
 		function scrollMoveHandler(event){
 			if (isScrolling) {
-				let scrollPos = event.touches ? event.touches[0].clientX : event.clientX
-				let scrollOffsetPercent = ((scrollPos - scrollStart) / scrollTrack.offsetWidth) * 100
+				let scrollPos:number = event.touches ? event.touches[0].clientX : event.clientX
+				let scrollOffsetPercent:number = ((scrollPos - scrollStart) / scrollTrack.offsetWidth) * 100
 
 				if (scrollPercent + scrollOffsetPercent >= 0 && scrollPercent + scrollOffsetPercent <= 100 - elVisiblePercentage) {
 					// While is inside container bounds
