@@ -1,13 +1,13 @@
 {
 	"name": "exscroll",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"description": "A plugin for customisable scrollbars outside a content container",
 	"main": "dist/exScroll.js",
 	"directories": {
 		"test": "test"
 	},
 	"scripts": {
-		"build": "babel src -d dist",
+		"build": "tsc -outDir dist",
 		"postcss": "postcss src/style.pcss -u \"postcss-nested\" autoprefixer -o dist/exScroll.css -w"
 	},
 	"repository": {
@@ -25,10 +25,6 @@
 	},
 	"homepage": "https://github.com/seanhay/exScroll#readme",
 	"devDependencies": {
-		"@babel/cli": "^7.21.0",
-		"@babel/core": "^7.21.4",
-		"@babel/preset-env": "^7.17.10",
-		"@babel/preset-typescript": "^7.21.4",
 		"@types/node": "^17.0.31",
 		"autoprefixer": "^10.4.7",
 		"postcss-cli": "^8.3.1",
