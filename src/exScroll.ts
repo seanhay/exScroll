@@ -14,7 +14,7 @@ function exScroll(opts = {}) {
 		scrollerName: '[exscroll-scrollbar]'
 	}
 	
-	let options = {
+	const options = {
 		...defaultOptions,
 		...opts
 	}
@@ -22,8 +22,8 @@ function exScroll(opts = {}) {
 	const containers = document.querySelectorAll(options.wrapperName)
 
 	containers.forEach((container) => {
-		const el:HTMLElement = container.querySelector(options.contentName)
-		const scrollbar:HTMLElement = container.querySelector(options.scrollerName)
+		const el = container.querySelector(options.contentName) as HTMLElement
+		const scrollbar = container.querySelector(options.scrollerName) as HTMLElement
 
 		// Add classes
 		el.classList.add('exscroll-wrapper')
@@ -43,17 +43,17 @@ function exScroll(opts = {}) {
 		let scrollStart:number = 0
 		let scrollPercent:number = 0
 
-		let elScrollWidth:number = el.scrollWidth
-		let elVisibleWidth:number = el.offsetWidth
-		let elVisiblePercentage:number = (elVisibleWidth / elScrollWidth) * 100
+		const elScrollWidth:number = el.scrollWidth
+		const elVisibleWidth:number = el.offsetWidth
+		const elVisiblePercentage:number = (elVisibleWidth / elScrollWidth) * 100
 
-		scrollDragger.style.cssText = "width:" + elVisiblePercentage + "%"
+		scrollDragger.style.cssText = `width:${elVisiblePercentage}%`
 
 		// Scrolling the scrollable container
 		el.addEventListener("scroll", function (e) {
 			if (!isScrolling) {
 				scrollPercent = (el.scrollLeft / (el.scrollWidth - el.offsetWidth)) * (100 - elVisiblePercentage)
-				scrollDragger.style.cssText += ";" + "left:" + scrollPercent + "%"
+				scrollDragger.style.cssText += `;left:${scrollPercent}%`
 			}
 		})
 
@@ -83,12 +83,12 @@ function exScroll(opts = {}) {
 		
 		function scrollMoveHandler(event){
 			if (isScrolling) {
-				let scrollPos:number = event.touches ? event.touches[0].clientX : event.clientX
-				let scrollOffsetPercent:number = ((scrollPos - scrollStart) / scrollTrack.offsetWidth) * 100
+				const scrollPos:number = event.touches ? event.touches[0].clientX : event.clientX
+				const scrollOffsetPercent:number = ((scrollPos - scrollStart) / scrollTrack.offsetWidth) * 100
 
 				if (scrollPercent + scrollOffsetPercent >= 0 && scrollPercent + scrollOffsetPercent <= 100 - elVisiblePercentage) {
 					// While is inside container bounds
-					scrollDragger.style.cssText += "; left: " + (scrollPercent + scrollOffsetPercent) + "%"
+					scrollDragger.style.cssText += `; left: ${(scrollPercent + scrollOffsetPercent)}%`
 					el.scrollLeft = ((scrollPercent + scrollOffsetPercent) / 100) * elScrollWidth
 				} else if (scrollPercent + scrollOffsetPercent < 0) {
 					// If overextends to left
@@ -96,7 +96,7 @@ function exScroll(opts = {}) {
 					el.scrollLeft = 0;
 				} else if (scrollPercent + scrollOffsetPercent > 100 - elVisiblePercentage) {
 					// If overextends to right
-					scrollDragger.style.cssText += "; left: " + (100 - elVisiblePercentage) + "%"
+					scrollDragger.style.cssText += `; left: ${(100 - elVisiblePercentage)}%`
 					el.scrollLeft = elScrollWidth
 				}
 			}
@@ -104,6 +104,6 @@ function exScroll(opts = {}) {
 	})
 }
 
-if(typeof exports != "undefined"){    
+if(typeof exports !== "undefined"){    
 	module.exports.exScroll
 }

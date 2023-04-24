@@ -1,6 +1,6 @@
 {
 	"name": "exscroll",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A plugin for customisable scrollbars outside a content container",
 	"main": "dist/exScroll.js",
 	"directories": {
