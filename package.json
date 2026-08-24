@@ -1,6 +1,6 @@
 {
 	"name": "exscroll",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Customisable scrollbars that live outside the container they scroll.",
 	"type": "module",
 	"main": "./dist/exscroll.js",
