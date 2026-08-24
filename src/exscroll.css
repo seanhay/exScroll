@@ -1,0 +1,107 @@
+/*
+ * exScroll base styles.
+ *
+ * Everything visual is driven by custom properties, so you can retheme the bar
+ * by setting variables on the scrollbar element (or any ancestor) rather than
+ * having to out-specify these selectors.
+ */
+
+.exscroll-scrollbar {
+	--exscroll-size: 12px;
+	--exscroll-padding: 2px;
+	--exscroll-track-bg: #fff;
+	--exscroll-track-border: 1px solid #aaa;
+	--exscroll-track-radius: 9999px;
+	--exscroll-dragger-bg: #aaa;
+	--exscroll-dragger-bg-hover: #888;
+	--exscroll-dragger-bg-active: #666;
+	--exscroll-dragger-radius: 9999px;
+	--exscroll-transition: 120ms ease;
+
+	box-sizing: border-box;
+	position: relative;
+	padding: var(--exscroll-padding);
+	background-color: var(--exscroll-track-bg);
+	border: var(--exscroll-track-border);
+	border-radius: var(--exscroll-track-radius);
+}
+
+.exscroll-scrollbar--x {
+	width: 100%;
+	height: var(--exscroll-size);
+}
+
+.exscroll-scrollbar--y {
+	width: var(--exscroll-size);
+	height: 100%;
+}
+
+/* Set by the plugin when the content doesn't overflow. Override to keep the
+   bar in the layout, e.g. `.exscroll-hidden { display: block; opacity: 0 }`. */
+.exscroll-hidden {
+	display: none;
+}
+
+.exscroll-track {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.exscroll-dragger {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	background-color: var(--exscroll-dragger-bg);
+	border-radius: var(--exscroll-dragger-radius);
+	cursor: pointer;
+	/* Stops the browser claiming the gesture for page scrolling on touch. */
+	touch-action: none;
+	transition: background-color var(--exscroll-transition);
+}
+
+.exscroll-scrollbar--x .exscroll-dragger {
+	height: 100%;
+}
+
+.exscroll-scrollbar--y .exscroll-dragger {
+	width: 100%;
+}
+
+.exscroll-dragger:hover {
+	background-color: var(--exscroll-dragger-bg-hover);
+}
+
+.exscroll-dragging .exscroll-dragger {
+	background-color: var(--exscroll-dragger-bg-active);
+}
+
+.exscroll-dragger:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* Applied to the scrolling element. Hides the native bar in favour of ours. */
+.exscroll-content {
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.exscroll-content::-webkit-scrollbar {
+	display: none;
+}
+
+/* Keep text from being selected mid-drag. */
+.exscroll-dragging,
+.exscroll-dragging .exscroll-track {
+	user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.exscroll-dragger {
+		transition: none;
+	}
+}

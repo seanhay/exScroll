@@ -1,14 +1,38 @@
 {
 	"name": "exscroll",
-	"version": "1.2.0",
-	"description": "A plugin for customisable scrollbars outside a content container",
-	"main": "dist/exScroll.js",
-	"directories": {
-		"test": "test"
+	"version": "2.0.0",
+	"description": "Customisable scrollbars that live outside the container they scroll.",
+	"type": "module",
+	"main": "./dist/exscroll.js",
+	"module": "./dist/exscroll.js",
+	"types": "./dist/exscroll.d.ts",
+	"unpkg": "./dist/exscroll.global.js",
+	"jsdelivr": "./dist/exscroll.global.js",
+	"exports": {
+		".": {
+			"types": "./dist/exscroll.d.ts",
+			"default": "./dist/exscroll.js"
+		},
+		"./style.css": "./dist/exscroll.css",
+		"./package.json": "./package.json"
 	},
+	"sideEffects": [
+		"*.css",
+		"./dist/exscroll.global.js"
+	],
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
 	"scripts": {
-		"build": "tsc -outDir dist",
-		"postcss": "postcss src/style.pcss -u \"postcss-nested\" autoprefixer -o dist/exScroll.css -w"
+		"build": "node scripts/clean.mjs && tsup && node scripts/copy-css.mjs",
+		"dev": "tsup --watch",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"typecheck": "tsc --noEmit",
+		"demo": "npm run build && node scripts/serve-demo.mjs",
+		"prepublishOnly": "npm run typecheck && npm run test && npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -16,7 +40,11 @@
 	},
 	"keywords": [
 		"scrollbar",
-		"customizable"
+		"scroll",
+		"custom-scrollbar",
+		"external-scrollbar",
+		"overflow",
+		"typescript"
 	],
 	"author": "Sean Hay (https://seanhay.dev)",
 	"license": "MIT",
@@ -24,10 +52,14 @@
 		"url": "https://github.com/seanhay/exScroll/issues"
 	},
 	"homepage": "https://github.com/seanhay/exScroll#readme",
+	"engines": {
+		"node": ">=18"
+	},
 	"devDependencies": {
-		"@types/node": "^17.0.31",
-		"autoprefixer": "^10.4.7",
-		"postcss-cli": "^8.3.1",
-		"postcss-nested": "^5.0.6"
+		"@vitest/coverage-v8": "^2.1.8",
+		"happy-dom": "^15.11.7",
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.8"
 	}
 }

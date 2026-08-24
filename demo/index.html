@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>exScroll demo</title>
+		<link rel="stylesheet" href="../dist/exscroll.css" />
+		<style>
+			body {
+				font: 16px/1.5 system-ui, sans-serif;
+				margin: 0;
+				padding: 40px 20px 80px;
+				color: #222;
+				background: #fafafa;
+			}
+			main { max-width: 720px; margin: 0 auto; }
+			h1 { font-size: 1.5rem; }
+			section { margin: 48px 0; }
+			h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: #666; }
+			.strip { display: flex; }
+			.strip > div {
+				flex: 0 0 220px; height: 140px; margin-right: 12px;
+				background: linear-gradient(135deg, #6366f1, #ec4899);
+				border-radius: 8px; color: #fff; display: grid; place-items: center;
+				font-weight: 600;
+			}
+			.tall > p { margin: 0 0 12px; }
+			.vertical-demo { display: flex; gap: 16px; height: 220px; }
+			.vertical-demo .content { flex: 1; }
+			button {
+				font: inherit; padding: 6px 14px; margin-right: 8px;
+				border: 1px solid #aaa; border-radius: 6px; background: #fff; cursor: pointer;
+			}
+			.themed .exscroll-scrollbar {
+				--exscroll-size: 18px;
+				--exscroll-track-bg: #1e1b4b;
+				--exscroll-track-border: none;
+				--exscroll-dragger-bg: #818cf8;
+				--exscroll-dragger-bg-hover: #a5b4fc;
+			}
+			.status { font-family: ui-monospace, monospace; font-size: 13px; color: #555; }
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>exScroll v2</h1>
+
+			<section id="horizontal">
+				<h2>Horizontal (auto-detected)</h2>
+				<div class="wrap">
+					<div class="content">
+						<div class="strip">
+							<div>1</div><div>2</div><div>3</div><div>4</div>
+							<div>5</div><div>6</div><div>7</div><div>8</div>
+						</div>
+					</div>
+					<div class="bar"></div>
+				</div>
+			</section>
+
+			<section id="vertical" class="themed">
+				<h2>Vertical (auto-detected, themed via custom properties)</h2>
+				<div class="wrap vertical-demo">
+					<div class="content tall">
+						<p>Scroll me. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+						<p>Qui officia deserunt mollit anim id est laborum et dolorum fuga.</p>
+						<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque.</p>
+					</div>
+					<div class="bar"></div>
+				</div>
+			</section>
+
+			<section id="fits">
+				<h2>Content that fits (bar auto-hides)</h2>
+				<div class="wrap">
+					<div class="content"><p>Nothing to scroll here.</p></div>
+					<div class="bar"></div>
+				</div>
+			</section>
+
+			<section>
+				<h2>Lifecycle</h2>
+				<button id="add">Add a card</button>
+				<button id="destroy">Destroy</button>
+				<button id="reinit">Re-init</button>
+				<p class="status" id="status"></p>
+			</section>
+		</main>
+
+		<script src="../dist/exscroll.global.js"></script>
+		<script>
+			const opts = {
+				wrapperName: ".wrap",
+				contentName: ".content",
+				scrollerName: ".bar",
+			}
+			let instance = exScroll(opts)
+
+			const status = document.getElementById("status")
+			const report = () => {
+				status.textContent = instance.instances
+					.map((i, n) => `#${n} axis=${i.axis} scrollable=${i.scrollable}`)
+					.join("  |  ") || "destroyed"
+			}
+			report()
+
+			document.getElementById("add").addEventListener("click", () => {
+				const card = document.createElement("div")
+				card.textContent = String(
+					document.querySelectorAll("#horizontal .strip > div").length + 1,
+				)
+				document.querySelector("#horizontal .strip").appendChild(card)
+				// autoRefresh picks this up on its own; report after a frame.
+				requestAnimationFrame(() => requestAnimationFrame(report))
+			})
+
+			document.getElementById("destroy").addEventListener("click", () => {
+				instance.destroy()
+				report()
+			})
+
+			document.getElementById("reinit").addEventListener("click", () => {
+				instance = exScroll(opts)
+				report()
+			})
+		</script>
+	</body>
+</html>
