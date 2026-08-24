@@ -165,7 +165,7 @@ Call sites keep working: `exScroll(options)` with the same three selector option
 - **The content element's class is now `.exscroll-content`**, not `.exscroll-wrapper`. v1 applied a class called "wrapper" to the element that *wasn't* the wrapper; if you overrode it, rename your rule.
 - **The dragger is positioned with `transform`, not `left`.** Custom CSS that set `left` on `.exscroll-dragger` should move to `transform`.
 - **Axis is auto-detected.** Pass `axis: "x"` to pin the old horizontal-only behaviour.
-- **Track markup is unchanged** still `.exscroll-track > .exscroll-dragger` inside your scrollbar element.
+- **Track markup is unchanged**: still `.exscroll-track > .exscroll-dragger` inside your scrollbar element.
 
 ## Browser support
 
